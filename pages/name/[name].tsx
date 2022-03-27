@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { localFavorites } from '../../utils';
 import confetti from 'canvas-confetti';
 import { Layout } from '../../components/layouts';
-import { Card, Grid, Text, Button, Container, Image } from '@nextui-org/react';
+import { Card, Grid, Text, Button, Container, Image, Spacer } from '@nextui-org/react';
 import { pokeApi } from '../../api';
 import { getPokemonInfo } from '../../utils/getPokemonInfo';
 
@@ -62,14 +62,16 @@ export const PokemonByNamePage:NextPage<Props> = ({pokemon}) => {
             </Grid>
             <Grid xs={12} sm={8}>
               <Card>
-                <Card.Header css={{display: 'flex', justifyContent:'space-between'}}>
-                  <Text h1>{pokemon.name}</Text>
-                  <Button
-                    color="gradient"
-                    ghost={!isInFavorites}
-                    onClick={onToggleFavorite}
-                  >
-                    {isInFavorites? 'En favoritos':'Guardar en favoritos'}</Button>
+                {/* <Card.Header css={{display: 'flex', justifyContent:'space-between'}}> */}
+                <Card.Header>
+                  <Grid xs={12} sm={12} css={{flexWrap:'wrap', justifyContent:'space-between', alignItems:'center'}}>
+                    <Text h1>{pokemon.name}</Text>
+                    <Button
+                      color="gradient"
+                      ghost={!isInFavorites}
+                      onClick={onToggleFavorite}
+                      >{isInFavorites? 'En favoritos':'Guardar en favoritos'}</Button>
+                  </Grid>
                 </Card.Header>
                 <Card.Body>
                   <Text size={30}>Sprites:</Text>
