@@ -20,6 +20,8 @@ export const PokemonByNamePage:NextPage<Props> = ({pokemon}) => {
     // console.log(pokemon);
   
     const [isInFavorites, setIsInFavorites] = useState(localFavorites.existInFavorites(pokemon.id))
+    // console.log(isInFavorites);
+    
   
     const onToggleFavorite = () => {
       console.log('ID:', pokemon.id);
