@@ -8,6 +8,7 @@ import { Layout } from '../../components/layouts';
 import { Card, Grid, Text, Button, Container, Image, Spacer } from '@nextui-org/react';
 import { pokeApi } from '../../api';
 import { getPokemonInfo } from '../../utils/getPokemonInfo';
+import { redirect } from 'next/dist/server/api-utils';
 
 
 interface Props {
@@ -118,7 +119,8 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         paths: data.results.map( (pokemon) => ({
             params: {name: pokemon.name}
         })),
-        fallback: false // regresa 404
+        // fallback: false // regresa 404
+        fallback: 'blocking'
     }
 }
 
@@ -146,9 +148,26 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     //     }
     // }
 
+    // Factorizado
+    // return {
+    //   props: {
+    //     pokemon: await getPokemonInfo(name)
+    //   }
+    // }
+
+    // Incremental Side Rendering
+    const pokemon = await getPokemonInfo(name)
+    if (!pokemon) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false
+        }
+      }
+    }
     return {
       props: {
-        pokemon: await getPokemonInfo(name)
+        pokemon
       }
     }
 }
