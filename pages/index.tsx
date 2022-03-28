@@ -8,6 +8,7 @@ import { PokemonListResponse, SmallPokemon } from '../interfaces';
 
 import { PokemonCard } from '../components/pokemon/PokemonCard';
 import { CounterApp } from '../components/01-useSate/CounterApp';
+import { CounterWithCustomHook } from '../components/01-useSate/CounterWithCustomHook';
 
 interface Props {
   pokemons: SmallPokemon[]
@@ -21,6 +22,7 @@ const HomePage: NextPage<Props> = ({pokemons}) => {
   return (
     <Layout title='Listado de Pokémons'>
       <CounterApp></CounterApp>
+      <CounterWithCustomHook></CounterWithCustomHook>
       {/* <Button color="gradient">Hola mundo</Button> */}
       <Grid.Container gap={2} justify='flex-start'>
         {
@@ -50,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   // const resp = await pokeApi.get('/pokemon?limit=151')
   // console.log(resp.data);
   
-  const {data} = await pokeApi.get<PokemonListResponse>('/pokemon?limit=500')
+  const {data} = await pokeApi.get<PokemonListResponse>('/pokemon?limit=50')
   // console.log(data);
   
   const pokemons: SmallPokemon[] = data.results.map((result, i) => ({
