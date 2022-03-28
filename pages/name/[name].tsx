@@ -101,7 +101,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     // const pokemon151 = [...Array(151)].map( (value, i) => `${i+1}` )
 
     // const {data} = await pokeApi.get<Pokemon>(`/pokemon/${name}`);
-    const { data } = await pokeApi.get<PokemonByNameResponse>(`/pokemon?limit=151`)
+    const { data } = await pokeApi.get<PokemonByNameResponse>(`/pokemon?limit=500`)
 
      return {
         // paths: [
