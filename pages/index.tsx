@@ -7,6 +7,7 @@ import { pokeApi } from '../api';
 import { PokemonListResponse, SmallPokemon } from '../interfaces';
 
 import { PokemonCard } from '../components/pokemon/PokemonCard';
+import { CounterApp } from '../components/01-useSate/CounterApp';
 
 interface Props {
   pokemons: SmallPokemon[]
@@ -19,6 +20,7 @@ const HomePage: NextPage<Props> = ({pokemons}) => {
   
   return (
     <Layout title='Listado de Pokémons'>
+      <CounterApp></CounterApp>
       {/* <Button color="gradient">Hola mundo</Button> */}
       <Grid.Container gap={2} justify='flex-start'>
         {
