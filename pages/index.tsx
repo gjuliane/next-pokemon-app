@@ -9,6 +9,8 @@ import { PokemonListResponse, SmallPokemon } from '../interfaces';
 import { PokemonCard } from '../components/pokemon/PokemonCard';
 import { CounterApp } from '../components/01-useSate/CounterApp';
 import { CounterWithCustomHook } from '../components/01-useSate/CounterWithCustomHook';
+import { SimpleForm } from '../components/02-useEffect/SimpleForm';
+import { ViveUsaFeed } from '../components/02-useEffect/ViveUsaFeed';
 
 interface Props {
   pokemons: SmallPokemon[]
@@ -21,8 +23,10 @@ const HomePage: NextPage<Props> = ({pokemons}) => {
   
   return (
     <Layout title='Listado de Pokémons'>
+      <ViveUsaFeed></ViveUsaFeed>
       <CounterApp></CounterApp>
       <CounterWithCustomHook></CounterWithCustomHook>
+      <SimpleForm></SimpleForm>
       {/* <Button color="gradient">Hola mundo</Button> */}
       <Grid.Container gap={2} justify='flex-start'>
         {
